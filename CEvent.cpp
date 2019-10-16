@@ -38,12 +38,12 @@ void CEvent::OnEvent(SDL_Event* Event) {
 		}
 
 		case SDL_KEYDOWN: {
-			OnKeyDown(Event->key.keysym.sym,Event->key.keysym.mod,Event->key.keysym.unicode);
+			OnKeyDown(Event->key.keysym.sym,Event->key.keysym.mod);
 			break;
 		}
 
 		case SDL_KEYUP: {
-			OnKeyUp(Event->key.keysym.sym,Event->key.keysym.mod,Event->key.keysym.unicode);
+			OnKeyUp(Event->key.keysym.sym,Event->key.keysym.mod);
 			break;
 		}
 
@@ -150,12 +150,12 @@ void CEvent::OnInputBlur() {
 }
 
 //------------------------------------------------------------------------------
-void CEvent::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
+void CEvent::OnKeyDown(SDL_Keycode sym, Uint16 mod) {
 	//Pure virtual, do nothing
 }
 
 //------------------------------------------------------------------------------
-void CEvent::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
+void CEvent::OnKeyUp(SDL_Keycode sym, Uint16 mod) {
 	//Pure virtual, do nothing
 }
 
