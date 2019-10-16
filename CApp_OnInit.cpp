@@ -12,6 +12,14 @@ bool CApp::OnInit() {
         return false;
     }
 
+    Surf_PrimarySurface = SDL_GetWindowSurface(Win_Window);
+
+    if ((Renderer = SDL_CreateRenderer(Win_Window, -1, SDL_RENDERER_ACCELERATED)) == NULL) {
+        return false;
+    }
+
+    SDL_SetRenderDrawColor(Renderer, 0x00, 0x00, 0x00, 0xFF);
+
     if((Surf_Grid = CSurface::OnLoad("./gfx/grid.bmp")) == NULL) {
         return false;
     }

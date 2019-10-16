@@ -10,6 +10,9 @@ CApp::CApp() {
     Surf_O = NULL;
 
     Win_Window = NULL;
+    Surf_PrimarySurface = NULL;
+
+    Renderer = NULL;
 
     Running = true;
 }
