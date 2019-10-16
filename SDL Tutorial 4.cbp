@@ -3,7 +3,6 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="SDL Tutorial 4" />
-		<Option pch_mode="0" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Release">
@@ -11,8 +10,9 @@
 				<Option working_dir="bin" />
 				<Option object_output="obj" />
 				<Option deps_output="dep" />
-				<Option type="0" />
+				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="0" />
 				<Compiler>
 					<Add option="-O2" />
@@ -35,7 +35,8 @@
 		</Linker>
 		<Unit filename="CApp.cpp" />
 		<Unit filename="CApp.h">
-			<Option link="1" />
+			<Option compile="1" />
+			<Option weight="0" />
 		</Unit>
 		<Unit filename="CApp_OnCleanup.cpp" />
 		<Unit filename="CApp_OnEvent.cpp" />
