@@ -6,19 +6,38 @@ CSurface::CSurface() {
 }
 
 //==============================================================================
-SDL_Surface* CSurface::OnLoad(const char* File) {
+SDL_Texture* CSurface::OnLoad(SDL_Renderer* Renderer, const char* File) {
 	SDL_Surface* Surf_Temp = NULL;
 
 	if((Surf_Temp = SDL_LoadBMP(File)) == NULL) {
 		return NULL;
 	}
 
-	return Surf_Temp;
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(Renderer, Surf_Temp);
+    SDL_FreeSurface(Surf_Temp);
+
+	return texture;
+}
+
+SDL_Texture* CSurface::OnLoadTransparent(SDL_Renderer* Renderer, const char* File, int R, int G, int B) {
+	SDL_Surface* Surf_Temp = NULL;
+
+	if((Surf_Temp = SDL_LoadBMP(File)) == NULL) {
+		return NULL;
+	}
+
+	// make transparent
+    SDL_SetColorKey(Surf_Temp, SDL_TRUE, SDL_MapRGB(Surf_Temp->format, R, G, B));
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(Renderer, Surf_Temp);
+    SDL_FreeSurface(Surf_Temp);
+
+	return texture;
 }
 
 //==============================================================================
-bool CSurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y) {
-	if(Surf_Dest == NULL || Surf_Src == NULL) {
+bool CSurface::OnDraw(SDL_Renderer* ren, SDL_Texture* tex, int X, int Y) {
+	if(ren == NULL || tex == NULL) {
 		return false;
 	}
 
@@ -27,14 +46,14 @@ bool CSurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int 
 	DestR.x = X;
 	DestR.y = Y;
 
-	SDL_BlitSurface(Surf_Src, NULL, Surf_Dest, &DestR);
-
+	SDL_QueryTexture(tex, NULL, NULL, &DestR.w, &DestR.h);
+    SDL_RenderCopy(ren, tex, NULL, &DestR);
 	return true;
 }
 
 //------------------------------------------------------------------------------
-bool CSurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H) {
-	if(Surf_Dest == NULL || Surf_Src == NULL) {
+bool CSurface::OnDraw(SDL_Renderer* ren, SDL_Texture* tex, int X, int Y, int X2, int Y2, int W, int H) {
+	if(ren == NULL || tex == NULL) {
 		return false;
 	}
 
@@ -50,20 +69,9 @@ bool CSurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int 
 	SrcR.w = W;
 	SrcR.h = H;
 
-	SDL_BlitSurface(Surf_Src, &SrcR, Surf_Dest, &DestR);
+    SDL_QueryTexture(tex, NULL, NULL, &DestR.w, &DestR.h);
+    SDL_RenderCopy(ren, tex, &SrcR, &DestR);
 
 	return true;
 }
 
-//------------------------------------------------------------------------------
-bool CSurface::Transparent(SDL_Surface* Surf_Dest, int R, int G, int B) {
-	if(Surf_Dest == NULL) {
-		return false;
-	}
-
-	SDL_SetColorKey(Surf_Dest, SDL_TRUE, SDL_MapRGB(Surf_Dest->format, R, G, B));
-
-	return true;
-}
-
-//==============================================================================

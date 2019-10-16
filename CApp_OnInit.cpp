@@ -1,6 +1,5 @@
 //==============================================================================
 #include "CApp.h"
-
 //==============================================================================
 bool CApp::OnInit() {
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -12,28 +11,23 @@ bool CApp::OnInit() {
         return false;
     }
 
-    Surf_PrimarySurface = SDL_GetWindowSurface(Win_Window);
-
     if ((Renderer = SDL_CreateRenderer(Win_Window, -1, SDL_RENDERER_ACCELERATED)) == NULL) {
         return false;
     }
 
     SDL_SetRenderDrawColor(Renderer, 0x00, 0x00, 0x00, 0xFF);
 
-    if((Surf_Grid = CSurface::OnLoad("./gfx/grid.bmp")) == NULL) {
+    if((tex_Grid = CSurface::OnLoad(Renderer, "./gfx/grid.bmp")) == NULL) {
         return false;
     }
 
-    if((Surf_X = CSurface::OnLoad("./gfx/x.bmp")) == NULL) {
+    if((tex_X = CSurface::OnLoadTransparent(Renderer, "./gfx/x.bmp", 255, 0, 255)) == NULL) {
         return false;
     }
 
-    if((Surf_O = CSurface::OnLoad("./gfx/o.bmp")) == NULL) {
+    if((tex_O = CSurface::OnLoadTransparent(Renderer, "./gfx/o.bmp", 255, 0, 255)) == NULL) {
         return false;
     }
-
-    CSurface::Transparent(Surf_X, 255, 0, 255);
-    CSurface::Transparent(Surf_O, 255, 0, 255);
 
     Reset();
 

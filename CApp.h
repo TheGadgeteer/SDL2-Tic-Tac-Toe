@@ -15,15 +15,14 @@ class CApp : public CEvent {
         bool            Running;
 
         SDL_Window*     Win_Window;
-        SDL_Surface*    Surf_PrimarySurface;
 
         SDL_Renderer*   Renderer;
 
     private:
-        SDL_Surface*    Surf_Grid;
+        SDL_Texture*    tex_Grid;
 
-        SDL_Surface*	Surf_X;
-        SDL_Surface*	Surf_O;
+        SDL_Texture*	tex_X;
+        SDL_Texture*	tex_O;
 
     private:
         int		        Grid[9];

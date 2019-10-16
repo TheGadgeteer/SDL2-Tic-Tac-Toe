@@ -1,16 +1,14 @@
 //==============================================================================
 #include "CApp.h"
-
 //==============================================================================
 CApp::CApp() {
     CurrentPlayer = 0;
 
-    Surf_Grid = NULL;
-    Surf_X = NULL;
-    Surf_O = NULL;
+    tex_Grid = NULL;
+    tex_X = NULL;
+    tex_O = NULL;
 
     Win_Window = NULL;
-    Surf_PrimarySurface = NULL;
 
     Renderer = NULL;
 
@@ -32,6 +30,8 @@ int CApp::OnExecute() {
 
         OnLoop();
         OnRender();
+
+        SDL_Delay(1);
     }
 
     OnCleanup();
