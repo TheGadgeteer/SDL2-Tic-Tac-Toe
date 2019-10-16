@@ -13,24 +13,31 @@ CEvent::~CEvent() {
 //==============================================================================
 void CEvent::OnEvent(SDL_Event* Event) {
 	switch(Event->type) {
-		case SDL_ACTIVEEVENT: {
-			switch(Event->active.state) {
-				case SDL_APPMOUSEFOCUS: {
-					if ( Event->active.gain )	OnMouseFocus();
-					else				OnMouseBlur();
-
+		case SDL_WINDOWEVENT: {
+			switch (Event->window.event) {
+				case SDL_WINDOWEVENT_ENTER: {
+					OnMouseFocus();
 					break;
 				}
-				case SDL_APPINPUTFOCUS: {
-					if ( Event->active.gain )	OnInputFocus();
-					else				OnInputBlur();
 
+				case SDL_WINDOWEVENT_LEAVE: {
+					OnMouseBlur();
 					break;
 				}
-				case SDL_APPACTIVE:	{
-					if ( Event->active.gain )	OnRestore();
-					else				OnMinimize();
-
+				case SDL_WINDOWEVENT_FOCUS_GAINED: {
+					OnInputFocus();
+					break;
+				}
+				case SDL_WINDOWEVENT_FOCUS_LOST: {
+					OnInputBlur();
+					break;
+				}
+				case SDL_WINDOWEVENT_RESTORED:	{
+					OnRestore();
+					break;
+				}
+				case SDL_WINDOWEVENT_HIDDEN: {
+					OnMinimize();
 					break;
 				}
 			}
