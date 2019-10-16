@@ -34,38 +34,43 @@
 1194099494 c:\development\tutorials\sdl tutorial 4\capp.cpp
 	"CApp.h"
 
-1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\capp.cpp
+1571248223 source:c:\users\severin\git-repositories\sdl tutorial 4\capp.cpp
 	"CApp.h"
 
-1571246441 c:\users\severin\git-repositories\sdl tutorial 4\capp.h
+1571248214 c:\users\severin\git-repositories\sdl tutorial 4\capp.h
 	<SDL2/SDL.h>
 	"CEvent.h"
 	"CSurface.h"
 
-1571246488 c:\users\severin\git-repositories\sdl tutorial 4\cevent.h
+1571247857 c:\users\severin\git-repositories\sdl tutorial 4\cevent.h
 	<SDL2/SDL.h>
 
 1571246495 c:\users\severin\git-repositories\sdl tutorial 4\csurface.h
 	<SDL2/SDL.h>
 
-1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_oncleanup.cpp
+1571248206 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_oncleanup.cpp
 	"CApp.h"
 
 1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_onevent.cpp
 	"CApp.h"
 
-1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_oninit.cpp
+1571248234 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_oninit.cpp
 	"CApp.h"
 
 1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_onloop.cpp
 	"CApp.h"
 
-1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_onrender.cpp
+1571248294 source:c:\users\severin\git-repositories\sdl tutorial 4\capp_onrender.cpp
 	"CApp.h"
 
 1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\cevent.cpp
 	"CEvent.h"
 
 1571246219 source:c:\users\severin\git-repositories\sdl tutorial 4\csurface.cpp
+	"CSurface.h"
+
+1571248214 source:c:\users\severin\git-repositories\sdl tutorial 4\capp.h
+	<SDL2/SDL.h>
+	"CEvent.h"
 	"CSurface.h"
 

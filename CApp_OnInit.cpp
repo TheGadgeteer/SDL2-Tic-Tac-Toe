@@ -7,7 +7,8 @@ bool CApp::OnInit() {
         return false;
     }
 
-    if((Surf_Display = SDL_SetVideoMode(600, 600, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
+    if((Win_Window = SDL_CreateWindow("Tic-Tac-Toe Tutorial", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                            600, 600, SDL_WINDOW_SHOWN)) == NULL) {
         return false;
     }
 
