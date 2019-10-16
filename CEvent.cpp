@@ -40,6 +40,16 @@ void CEvent::OnEvent(SDL_Event* Event) {
 					OnMinimize();
 					break;
 				}
+
+				case SDL_WINDOWEVENT_RESIZED: {
+					OnResize(Event->window.data1, Event->window.data2);
+					break;
+				}
+
+				case SDL_WINDOWEVENT_EXPOSED: {
+					OnExpose();
+					break;
+				}
 			}
 			break;
 		}
@@ -129,15 +139,7 @@ void CEvent::OnEvent(SDL_Event* Event) {
 			break;
 		}
 
-		case SDL_VIDEORESIZE: {
-			OnResize(Event->resize.w,Event->resize.h);
-			break;
-		}
 
-		case SDL_VIDEOEXPOSE: {
-			OnExpose();
-			break;
-		}
 
 		default: {
 			OnUser(Event->user.type,Event->user.code,Event->user.data1,Event->user.data2);
